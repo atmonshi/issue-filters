@@ -12,26 +12,26 @@ return new class extends Migration
         $tenant = app($this->getTenant());
         
         Schema::table('filament_filter_sets', function (Blueprint $table) use ($tenant) {
-            $table->unsignedBigInteger('tenant_id')->nullable()->after('user_id')->change();
+            $table->unsignedBigInteger('company_id')->nullable()->after('user_id')->change();
 
-            $table->foreign('tenant_id')->references('id')->on($tenant->getTable());
+            $table->foreign('company_id')->references('id')->on($tenant->getTable());
         });
 
         Schema::table('filament_filter_sets_managed_preset_views', function (Blueprint $table) use ($tenant) {
-            $table->unsignedBigInteger('tenant_id')->nullable()->after('user_id')->change();
+            $table->unsignedBigInteger('company_id')->nullable()->after('user_id')->change();
             
-            $table->foreign('tenant_id')->references('id')->on($tenant->getTable());
+            $table->foreign('company_id')->references('id')->on($tenant->getTable());
         });
     }
 
     public function down(): void
     {
         Schema::table('filament_filter_sets', function (Blueprint $table) {
-            $table->dropForeign(['tenant_id']);
+            $table->dropForeign(['company_id']);
         });
 
         Schema::table('filament_filter_sets_managed_preset_views', function (Blueprint $table) {
-            $table->dropForeign(['tenant_id']);
+            $table->dropForeign(['company_id']);
         });
     }
 

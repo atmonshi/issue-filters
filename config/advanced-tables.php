@@ -148,8 +148,8 @@ return [
     */
 
     'tenancy' => [
-        'tenant' => null,
-        'tenant_column' => 'tenant_id',
+        'tenant' => \App\Models\Company::class,
+        'tenant_column' => 'company_id',
     ],
 
     /*
